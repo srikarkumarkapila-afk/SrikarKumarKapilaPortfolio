@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srikar Kumar Kapila - UHP Learning Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ucRed: '#C6011F',
+                        ucDarkRed: '#9b0117',
+                        ucBlack: '#000000',
+                        darkBg: '#0A0A0C',
+                        cardBg: '#141418',
+                        cardBorder: '#262630'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #000;
+            overflow-x: hidden;
+        }
+
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        #bg-campus {
+            background-image: url('WhatsApp Image 2026-09-27 at 9.57.37 AM.jpeg');
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
+        }
+
+        #bg-hangar {
+            background-image: url('Plane.jpeg');
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+            filter: brightness(1.35) contrast(1.1);
+        }
+
+        #scroll-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            opacity: 0.80; /* Lowered overlay opacity so the background imagery shows through more */
+            transition: opacity 0.1s ease-out;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .pictorial-grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        details summary {
+            cursor: pointer;
+            list-style: none;
+        }
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        @media(max-width: 1024px) {
+            .pictorial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media(max-width: 640px) {
+            .pictorial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollFraction = Math.min(1, Math.max(0, scrollTop / (docHeight || 1)));
+
+            const bgCampus = document.getElementById('bg-campus');
+            const bgHangar = document.getElementById('bg-hangar');
+            const overlay = document.getElementById('scroll-overlay');
+
+            if (scrollFraction <= 0.5) {
+                const progress = scrollFraction * 2;
+                bgCampus.style.opacity = (1 - progress).toFixed(3);
+                bgHangar.style.opacity = '0';
+            } else {
+                const progress = (scrollFraction - 0.5) * 2;
+                bgCampus.style.opacity = '0';
+                bgHangar.style.opacity = progress.toFixed(3);
+            }
+
+            const dynamicOpacity = 0.80 + (scrollFraction * 0.10);
+            overlay.style.opacity = dynamicOpacity.toFixed(3);
+        });
+    </script>
+</head>
+<body class="text-gray-100 font-sans antialiased min-h-screen flex flex-col selection:bg-ucRed selection:text-white relative">
+
+    <div id="bg-campus" class="bg-layer"></div>
+    <div id="bg-hangar" class="bg-layer"></div>
+    <div id="scroll-overlay"></div>
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-darkBg/90 backdrop-blur-md border-b border-cardBorder">
+        <div class="max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center group" title="Return to About Me">
+                    <div class="w-12 h-12 rounded-xl overflow-hidden bg-cardBorder border border-ucRed/40 flex items-center justify-center shadow-lg shadow-ucRed/20 group-hover:border-ucRed transition-all">
+                        <img src="SK.jpg" alt="SK Logo" class="w-full h-full object-cover">
+                    </div>
+                </a>
+                <div>
+                    <span class="block font-bold text-lg tracking-tight text-white">Srikar Kumar Kapila</span>
+                    <span class="block text-xs text-ucRed font-medium tracking-wider uppercase">University of Cincinnati | University Honors Program</span>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                <a href="index.html" class="px-4 py-2 rounded-xl text-sm font-medium bg-ucRed text-white transition-all shadow-sm">About Me</a>
+                <a href="involvement.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Involvement & Interests</a>
+                <a href="yearinreview.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Year-In-Review</a>
+                <a href="honors.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Honors Experiences</a>
+            </nav>
+
+            <div class="md:hidden">
+                <button type="button" class="text-gray-400 hover:text-white p-2">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container Spread Across Page Width -->
+    <main class="flex-grow w-[96%] max-w-[1700px] mx-auto px-4 sm:px-8 lg:px-12 py-12 space-y-16 relative z-10">
+
+        <!-- Hero / Title Section -->
+        <section class="text-center space-y-4 py-4 border-b border-cardBorder">
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white">
+                My Journey as an Aerospace Engineer
+            </h1>
+            <p class="max-w-4xl mx-auto text-gray-300 text-lg sm:text-xl">
+                Welcome to my digital learning portfolio documenting my academic growth, reflections, and experiences at the University of Cincinnati.
+            </p>
+        </section>
+
+        <!-- TOP WIDESCREEN SECTION: Profile Card Aligned Perfectly with Right-Hand Stack -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-4">
+            
+            <!-- Left Column: Full-Height Profile Card -->
+            <div class="lg:col-span-4 bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <!-- Profile Image -->
+                <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border-2 border-ucRed/40 group">
+                    <img src="Srikar Professional Image.jpeg" alt="Srikar Kumar Kapila" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-xs text-gray-200 font-medium">Srikar Kumar Kapila • Aerospace Engineering</span>
+                    </div>
+                </div>
+
+                <!-- Name & Title -->
+                <div class="border-b border-cardBorder pb-4 text-center">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center space-x-2 flex-wrap gap-2">
+                        <span>Srikar Kumar Kapila</span>
+                        <span class="text-xs px-3 py-1 rounded-xl bg-ucRed/20 text-ucRed font-semibold border border-ucRed/30">UHP Scholar</span>
+                    </h2>
+                    <p class="text-gray-400 text-sm mt-1">College of Engineering and Applied Science (CEAS)</p>
+                </div>
+
+                <!-- Detailed Information Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                    <div class="bg-darkBg/60 p-4 rounded-xl border border-cardBorder">
+                        <span class="block text-gray-400 text-[10px] font-semibold uppercase tracking-wider">Major</span>
+                        <span class="text-white font-medium mt-1 block">Aerospace Engineering</span>
+                    </div>
+                    <div class="bg-darkBg/60 p-4 rounded-xl border border-cardBorder">
+                        <span class="block text-gray-400 text-[10px] font-semibold uppercase tracking-wider">Graduation</span>
+                        <span class="text-white font-medium mt-1 block">2031</span>
+                    </div>
+                    <div class="bg-darkBg/60 p-4 rounded-xl border border-cardBorder sm:col-span-2">
+                        <span class="block text-gray-400 text-[10px] font-semibold uppercase tracking-wider">UC Email</span>
+                        <a href="mailto:kapilasr@mail.uc.edu" class="text-ucRed hover:underline font-medium mt-1 block truncate">kapilasr@mail.uc.edu</a>
+                    </div>
+                    <div class="bg-darkBg/60 p-4 rounded-xl border border-cardBorder sm:col-span-2">
+                        <span class="block text-gray-400 text-[10px] font-semibold uppercase tracking-wider">Cumulative GPA</span>
+                        <span class="text-white font-medium mt-1 block">TBD</span>
+                    </div>
+                </div>
+
+                <!-- LinkedIn Button -->
+                <div>
+                    <a href="https://www.linkedin.com/in/s-k-k/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full py-3 px-6 rounded-xl bg-[#0a66c2] hover:bg-[#095196] text-white font-semibold transition-all shadow-lg space-x-2 text-sm">
+                        <i class="fa-brands fa-linkedin text-lg"></i>
+                        <span>Connect on LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Column Stack: Narrative, Graphic, 5 Journey Cards, Quote Banner, & Details Accordion All Aligned -->
+            <div class="lg:col-span-8 space-y-8">
+                
+                <!-- Top Right Row: Journey Intro & Flight Path Graphic -->
+                <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-center">
+                    <div class="xl:col-span-7 space-y-6">
+                        <div class="text-xs font-bold uppercase tracking-[2.4px] text-ucRed">Across countries. Beyond the classroom.</div>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight font-serif">
+                            Each move shaped<br>how I <span class="text-ucRed font-normal italic">think.</span>
+                        </h2>
+                        <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                            Starting over has been a recurring part of my story. Along the way, I discovered new interests, built stronger habits, and learned how to keep moving forward.
+                        </p>
+                        <div class="grid grid-cols-3 gap-4 pt-4 border-t border-cardBorder">
+                            <div>
+                                <strong class="text-2xl sm:text-3xl text-white block">3</strong>
+                                <span class="text-[10px] tracking-wider text-gray-400 uppercase font-bold">Countries</span>
+                            </div>
+                            <div>
+                                <strong class="text-2xl sm:text-3xl text-white block">5</strong>
+                                <span class="text-[10px] tracking-wider text-gray-400 uppercase font-bold">Chapters</span>
+                            </div>
+                            <div>
+                                <strong class="text-2xl sm:text-3xl text-white block">1</strong>
+                                <span class="text-[10px] tracking-wider text-gray-400 uppercase font-bold">Ongoing Journey</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="xl:col-span-5 bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl p-6 shadow-xl flex items-center justify-center">
+                        <svg class="w-full h-auto max-w-[260px]" viewBox="0 0 440 330" role="img" aria-label="An illustrated flight path connects India, Canada, and the United States">
+                            <circle cx="229" cy="165" r="132" fill="#1c1c24"/>
+                            <g fill="none" stroke="#333342">
+                                <ellipse cx="229" cy="165" rx="76" ry="132"/>
+                                <ellipse cx="229" cy="165" rx="122" ry="48"/>
+                                <path d="M97 165h264M113 102h232M113 228h232M229 33v264"/>
+                            </g>
+                            <path d="M312 218C411 122 277 10 150 92S54 259 218 226" fill="none" stroke="#C6011F" stroke-width="2" stroke-dasharray="5 7"/>
+                            <g fill="#ffffff">
+                                <circle cx="312" cy="218" r="5"/>
+                                <circle cx="150" cy="92" r="5"/>
+                                <circle cx="218" cy="226" r="5"/>
+                            </g>
+                            <g font-family="Arial" font-size="11" font-weight="bold" fill="#ffffff" letter-spacing="1.5">
+                                <text x="317" y="243">INDIA</text>
+                                <text x="89" y="73">CANADA</text>
+                                <text x="145" y="254">UNITED STATES</text>
+                            </g>
+                            <g transform="translate(296 65) rotate(37)">
+                                <path d="M0-29 6-5 29 10 28 15 5 8 4 26 12 32 11 36 0 32-11 36-12 32-4 26-5 8-28 15-29 10-6-5Z" fill="#ffffff" stroke="#0A0A0C" stroke-width="3"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Middle Right Row: The 5 Pictorial Journey Steps Section -->
+                <section id="journey" aria-labelledby="journey-title" class="space-y-6">
+                    <div class="border-b border-cardBorder pb-3">
+                        <h3 id="journey-title" class="text-2xl sm:text-3xl font-serif text-white font-normal">How challenges have shaped me</h3>
+                        <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Every chapter left me with something to carry forward.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                        <!-- Stop 1: India -->
+                        <article class="relative flex flex-col">
+                            <div class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl overflow-hidden flex-grow flex flex-col shadow-xl">
+                                <div class="h-28 bg-darkBg/60 flex items-center justify-center p-4 border-b border-cardBorder">
+                                    <svg class="w-24 h-16 fill-none stroke-gray-200 stroke-[2] stroke-linecap-round stroke-linejoin-round" viewBox="0 0 120 100" aria-hidden="true">
+                                        <path d="M15 29q23-12 45 0 22-12 45 0v51q-23-12-45 0-22-12-45 0ZM60 29v51M24 41q13-6 26 0M24 52q13-6 26 0M70 41q13-6 26 0M70 52q13-6 26 0"/>
+                                        <path d="M60 5v10M39 11l5 8M81 11l-5 8" stroke="#C6011F"/>
+                                    </svg>
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col justify-between">
+                                    <div>
+                                        <div class="text-[9px] tracking-[1.4px] font-bold text-gray-400 uppercase">India · Beginning</div>
+                                        <h4 class="text-lg font-serif font-normal text-white my-1">A love of learning</h4>
+                                        <p class="text-gray-300 text-xs leading-relaxed mb-3">Advancing a grade was an early milestone in my academic journey.</p>
+                                    </div>
+                                    <span class="text-[8px] tracking-[1.2px] font-bold uppercase text-ucRed border-t border-cardBorder pt-2 block">Curiosity</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Stop 2: Canada -->
+                        <article class="relative flex flex-col">
+                            <div class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl overflow-hidden flex-grow flex flex-col shadow-xl">
+                                <div class="h-28 bg-darkBg/60 flex items-center justify-center p-4 border-b border-cardBorder">
+                                    <svg class="w-24 h-16 fill-none stroke-gray-200 stroke-[2] stroke-linecap-round stroke-linejoin-round" viewBox="0 0 120 100" aria-hidden="true">
+                                        <path d="M34 80h52l-5-10H39ZM45 70l4-25-10-5 7-17 15-8 15 13-3 17-10 5 10 20M49 26l7 1M61 15l-1-8"/>
+                                        <path d="m13 33-8 8 8 8m94-16 8 8-8 8" stroke="#C6011F"/>
+                                    </svg>
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col justify-between">
+                                    <div>
+                                        <div class="text-[9px] tracking-[1.4px] font-bold text-gray-400 uppercase">Canada · Interests</div>
+                                        <h4 class="text-lg font-serif font-normal text-white my-1">Room to explore</h4>
+                                        <p class="text-gray-300 text-xs leading-relaxed mb-3">A setback opened time for programming, robotics, and chess.</p>
+                                    </div>
+                                    <span class="text-[8px] tracking-[1.2px] font-bold uppercase text-ucRed border-t border-cardBorder pt-2 block">Exploration</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Stop 3: United States -->
+                        <article class="relative flex flex-col">
+                            <div class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl overflow-hidden flex-grow flex flex-col shadow-xl">
+                                <div class="h-28 bg-darkBg/60 flex items-center justify-center p-4 border-b border-cardBorder">
+                                    <svg class="w-24 h-16 fill-none stroke-gray-200 stroke-[2] stroke-linecap-round stroke-linejoin-round" viewBox="0 0 120 100" aria-hidden="true">
+                                        <rect x="20" y="22" width="80" height="53" rx="9"/>
+                                        <path d="M20 51h80M39 23v28M60 23v28M80 23v28M30 62h8M82 62h8M32 75v8h11v-8M77 75v8h11v-8"/>
+                                        <circle cx="95" cy="20" r="14" fill="#141418" stroke="#C6011F"/>
+                                        <path d="M95 12v8l6 4" stroke="#C6011F"/>
+                                    </svg>
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col justify-between">
+                                    <div>
+                                        <div class="text-[9px] tracking-[1.4px] font-bold text-gray-400 uppercase">US · High School</div>
+                                        <h4 class="text-lg font-serif font-normal text-white my-1">Making time count</h4>
+                                        <p class="text-gray-300 text-xs leading-relaxed mb-3">Four hours commuting each day taught me to plan my time.</p>
+                                    </div>
+                                    <span class="text-[8px] tracking-[1.2px] font-bold uppercase text-ucRed border-t border-cardBorder pt-2 block">Discipline</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Stop 4: Mason, Ohio -->
+                        <article class="relative flex flex-col">
+                            <div class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl overflow-hidden flex-grow flex flex-col shadow-xl">
+                                <div class="h-28 bg-darkBg/60 flex items-center justify-center p-4 border-b border-cardBorder">
+                                    <svg class="w-24 h-16 fill-none stroke-gray-200 stroke-[2] stroke-linecap-round stroke-linejoin-round" viewBox="0 0 120 100" aria-hidden="true">
+                                        <path d="m10 36 50-20 50 20-50 20ZM30 45v23q30 22 60 0V45M107 38v30"/>
+                                        <path d="m46 81 9 9 20-19" stroke="#C6011F" stroke-width="3"/>
+                                    </svg>
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col justify-between">
+                                    <div>
+                                        <div class="text-[9px] tracking-[1.4px] font-bold text-gray-400 uppercase">Mason, Ohio</div>
+                                        <h4 class="text-lg font-serif font-normal text-white my-1">Finding footing</h4>
+                                        <p class="text-gray-300 text-xs leading-relaxed mb-3">Graduated summa cum laude with 70 college credits.</p>
+                                    </div>
+                                    <span class="text-[8px] tracking-[1.2px] font-bold uppercase text-ucRed border-t border-cardBorder pt-2 block">Adaptability</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Stop 5: Cincinnati -->
+                        <article class="relative flex flex-col">
+                            <div class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl overflow-hidden flex-grow flex flex-col shadow-xl">
+                                <div class="h-28 bg-darkBg/60 flex items-center justify-center p-4 border-b border-cardBorder">
+                                    <svg class="w-24 h-16 fill-none stroke-gray-200 stroke-[2] stroke-linecap-round stroke-linejoin-round" viewBox="0 0 120 100" aria-hidden="true">
+                                        <path d="M46 64V40q0-20 14-31 14 11 14 31v24ZM46 45 32 60v17l14-13M74 45l14 15v17L74 64"/>
+                                        <circle cx="60" cy="35" r="7"/>
+                                        <path d="M53 72v12M60 74v19M67 72v12" stroke="#C6011F"/>
+                                    </svg>
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col justify-between">
+                                    <div>
+                                        <div class="text-[9px] tracking-[1.4px] font-bold text-gray-400 uppercase">Cincinnati</div>
+                                        <h4 class="text-lg font-serif font-normal text-white my-1">Growing</h4>
+                                        <p class="text-gray-300 text-xs leading-relaxed mb-3">Bringing curiosity & persistence to aerospace engineering.</p>
+                                    </div>
+                                    <span class="text-[8px] tracking-[1.2px] font-bold uppercase text-ucRed border-t border-cardBorder pt-2 block">Purpose</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Quote Banner -->
+                <section class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl p-6 sm:p-8 shadow-xl grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                    <div class="text-[10px] font-bold uppercase tracking-[2.4px] text-ucRed">What I carry forward</div>
+                    <p class="md:col-span-2 font-serif text-xl sm:text-2xl text-white leading-relaxed m-0">
+                        “Each move meant starting over.<br>Each experience gave me something to build on.”
+                    </p>
+                </section>
+
+                <!-- Collapsible Detailed Story Section -->
+                <details class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl p-6 sm:p-8 shadow-xl">
+                    <summary class="font-bold text-base text-white flex justify-between items-center select-none">
+                        <span>Read the story behind my journey</span>
+                        <span class="text-ucRed text-2xl font-normal">+</span>
+                    </summary>
+                    <div class="pt-6 mt-6 border-t border-cardBorder space-y-6 text-gray-300 text-base leading-relaxed">
+                        <h3 class="text-2xl font-serif font-normal text-white">Discovering more than academic success</h3>
+                        <p>In India, I had advanced a grade. When my family moved to Canada in 2019, age-based placement put me in fifth grade for two months, even though I had completed sixth grade. I felt discouraged, but the additional time gave me room to explore programming, robotics, and chess. These interests became an important part of my life.</p>
+                        
+                        <h3 class="text-2xl font-serif font-normal text-white">Building habits through a demanding routine</h3>
+                        <p>After moving to the United States, I attended a magnet high school where I could take college courses. The opportunity came with two hours on the school bus each morning and another two each evening. Balancing that commute with my coursework taught me to manage my time carefully.</p>
+                        
+                        <h3 class="text-2xl font-serif font-normal text-white">Adapting to another new beginning</h3>
+                        <p>Moving to Mason, Ohio, before my junior year brought another adjustment. Differences in how my honors coursework was recognized lowered my weighted GPA. I continued to challenge myself and take college courses. I graduated summa cum laude from William Mason High School in 2026, in the top 5% of my class, with 70 college credits.</p>
+                        
+                        <h3 class="text-2xl font-serif font-normal text-white">Moving forward with support</h3>
+                        <p>Shortly before my first university tuition payment was due, I learned that a change in my student status had made me ineligible for the Ohio Governor’s Merit Scholarship. I remain grateful for my family’s support as I began this next stage of my education.</p>
+                        
+                        <p>These experiences have broadened what achievement means to me. It includes finding new interests when plans change, building habits under difficult circumstances, and continuing to learn. These are the lessons I want to carry into engineering and the challenges ahead.</p>
+                    </div>
+                </details>
+
+            </div>
+
+        </section>
+
+        <!-- Secondary Section: Interests & Passions -->
+        <section id="involvement" class="space-y-8">
+            <div class="flex items-center justify-between border-b border-cardBorder pb-4 flex-wrap gap-4">
+                <div>
+                    <h3 class="text-2xl sm:text-3xl font-serif text-white font-normal">Interests & Passions at UHP</h3>
+                    <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">What drives my curiosity and engagement on campus.</p>
+                </div>
+                <a href="involvement.html" class="inline-flex items-center space-x-2 text-sm font-semibold text-white bg-ucRed hover:bg-ucDarkRed px-5 py-2.5 rounded-xl transition-all shadow-md shadow-ucRed/20">
+                    <span>View Full Involvement Page</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="pictorial-grid">
+                <!-- Interest 1 -->
+                <div class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl overflow-hidden flex flex-col shadow-xl">
+                    <div class="h-32 bg-darkBg/60 flex items-center justify-center p-4 border-b border-cardBorder text-ucRed text-4xl">
+                        <i class="fa-solid fa-atom"></i>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="text-[10px] tracking-[1.4px] font-bold text-gray-400 uppercase">Research Milestone</div>
+                            <h4 class="text-xl font-serif font-normal text-white my-2">Aerospace Research</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">Get into Aerospace Research through the RAMP (Research and Mentorship Program) at UC.</p>
+                        </div>
+                        <span class="text-[9px] tracking-[1.2px] font-bold uppercase text-ucRed border-t border-cardBorder pt-3 block">Discovery</span>
+                    </div>
+                </div>
+
+                <!-- Interest 2 -->
+                <div class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl overflow-hidden flex flex-col shadow-xl">
+                    <div class="h-32 bg-darkBg/60 flex items-center justify-center p-4 border-b border-cardBorder text-ucRed text-4xl">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="text-[10px] tracking-[1.4px] font-bold text-gray-400 uppercase">Community & Growth</div>
+                            <h4 class="text-xl font-serif font-normal text-white my-2">Peer Connections</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">Connect with many academically motivated students within the University Honors Program and CEAS.</p>
+                        </div>
+                        <span class="text-[9px] tracking-[1.2px] font-bold uppercase text-ucRed border-t border-cardBorder pt-3 block">Collaboration</span>
+                    </div>
+                </div>
+
+                <!-- Interest 3 -->
+                <div class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl overflow-hidden flex flex-col shadow-xl">
+                    <div class="h-32 bg-darkBg/60 flex items-center justify-center p-4 border-b border-cardBorder text-ucRed text-4xl">
+                        <i class="fa-solid fa-hands-holding-child"></i>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="text-[10px] tracking-[1.4px] font-bold text-gray-400 uppercase">Real-World Impact</div>
+                            <h4 class="text-xl font-serif font-normal text-white my-2">Volunteer & Internships</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">Participate in UHP exclusive volunteer opportunities and professional internships to build real-world impact.</p>
+                        </div>
+                        <span class="text-[9px] tracking-[1.2px] font-bold uppercase text-ucRed border-t border-cardBorder pt-3 block">Community</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secondary Section: Academic & Personal Goals -->
+        <section class="space-y-8">
+            <div class="flex items-center justify-between border-b border-cardBorder pb-4 flex-wrap gap-4">
+                <div>
+                    <h3 class="text-2xl sm:text-3xl font-serif text-white font-normal">Academic & Personal Goals</h3>
+                    <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Milestones I am striving to achieve in my engineering career.</p>
+                </div>
+                <a href="honors.html" class="inline-flex items-center space-x-2 text-sm font-semibold text-white bg-ucRed hover:bg-ucDarkRed px-5 py-2.5 rounded-xl transition-all shadow-md shadow-ucRed/20">
+                    <span>View Honors Experiences</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Goal 1 -->
+                <div class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl overflow-hidden flex flex-col shadow-xl">
+                    <div class="h-28 bg-darkBg/60 flex items-center justify-center p-4 border-b border-cardBorder text-ucRed font-extrabold text-3xl font-mono">
+                        01
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="text-[10px] tracking-[1.4px] font-bold text-gray-400 uppercase">Excellence</div>
+                            <h4 class="text-xl font-serif font-normal text-white my-2">4.0 GPA</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">Maintain academic excellence and achieve a 4.0 cumulative GPA throughout coursework.</p>
+                        </div>
+                        <span class="text-[9px] tracking-[1.2px] font-bold uppercase text-ucRed border-t border-cardBorder pt-3 block">Target</span>
+                    </div>
+                </div>
+
+                <!-- Goal 2 -->
+                <div class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl overflow-hidden flex flex-col shadow-xl">
+                    <div class="h-28 bg-darkBg/60 flex items-center justify-center p-4 border-b border-cardBorder text-ucRed font-extrabold text-3xl font-mono">
+                        02
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="text-[10px] tracking-[1.4px] font-bold text-gray-400 uppercase">Graduate Studies</div>
+                            <h4 class="text-xl font-serif font-normal text-white my-2">PhD in Aerospace</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">Pursue advanced graduate studies and earn a PhD in Aerospace Engineering.</p>
+                        </div>
+                        <span class="text-[9px] tracking-[1.2px] font-bold uppercase text-ucRed border-t border-cardBorder pt-3 block">Milestone</span>
+                    </div>
+                </div>
+
+                <!-- Goal 3 -->
+                <div class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl overflow-hidden flex flex-col shadow-xl">
+                    <div class="h-28 bg-darkBg/60 flex items-center justify-center p-4 border-b border-cardBorder text-ucRed font-extrabold text-3xl font-mono">
+                        03
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="text-[10px] tracking-[1.4px] font-bold text-gray-400 uppercase">Research Focus</div>
+                            <h4 class="text-xl font-serif font-normal text-white my-2">Aero, Propulsion & Structure</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">Conduct advanced research in Aerodynamics, Propulsion, and Structure.</p>
+                        </div>
+                        <span class="text-[9px] tracking-[1.2px] font-bold uppercase text-ucRed border-t border-cardBorder pt-3 block">Research</span>
+                    </div>
+                </div>
+
+                <!-- Goal 4 -->
+                <div class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl overflow-hidden flex flex-col shadow-xl">
+                    <div class="h-28 bg-darkBg/60 flex items-center justify-center p-4 border-b border-cardBorder text-ucRed font-extrabold text-3xl font-mono">
+                        04
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="text-[10px] tracking-[1.4px] font-bold text-gray-400 uppercase">Creation</div>
+                            <h4 class="text-xl font-serif font-normal text-white my-2">Patents & Designs</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">Patent my own fuel-efficient flight designs and innovative propulsion mechanisms.</p>
+                        </div>
+                        <span class="text-[9px] tracking-[1.2px] font-bold uppercase text-ucRed border-t border-cardBorder pt-3 block">Impact</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cardBg/90 backdrop-blur-md border-t border-cardBorder mt-20 py-10 text-center text-gray-400 text-base relative z-10">
+        <div class="w-[96%] max-w-[1700px] mx-auto px-4 space-y-2">
+            <p>© 2026 Srikar Kumar Kapila • University of Cincinnati University Honors Program (UHP)</p>
+            <p class="text-xs text-gray-500">College of Engineering and Applied Science • Aerospace Engineering</p>
+        </div>
+    </footer>
+
+    <script>
+        const detailsEl = document.querySelector('details');
+        if (detailsEl) {
+            detailsEl.addEventListener('toggle', () => {
+                const icon = detailsEl.querySelector('summary span:last-child');
+                if (icon) {
+                    icon.textContent = detailsEl.open ? '−' : '+';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
