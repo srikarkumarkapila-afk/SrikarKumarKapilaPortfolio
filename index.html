@@ -54,7 +54,8 @@
             background-image: url('Plane.jpeg');
             opacity: 0;
             transition: opacity 0.3s ease-out;
-            filter: brightness(1.35) contrast(1.1);
+            /* Boosted brightness, contrast, and saturation so it stands out clearly */
+            filter: brightness(2.1) contrast(1.25) saturate(1.1);
         }
 
         #scroll-overlay {
@@ -64,7 +65,8 @@
             width: 100%;
             height: 100%;
             background-color: #000000;
-            opacity: 0.80;
+            /* Lowered overlay opacity so the background shines through much better */
+            opacity: 0.65;
             transition: opacity 0.1s ease-out;
             pointer-events: none;
             z-index: 1;
@@ -115,10 +117,11 @@
             } else {
                 const progress = (scrollFraction - 0.5) * 2;
                 bgCampus.style.opacity = '0';
+                // Increased max opacity to 1.0 so the plane image is fully vibrant
                 bgHangar.style.opacity = progress.toFixed(3);
             }
 
-            const dynamicOpacity = 0.80 + (scrollFraction * 0.10);
+            const dynamicOpacity = 0.65 + (scrollFraction * 0.10);
             overlay.style.opacity = dynamicOpacity.toFixed(3);
         }
 

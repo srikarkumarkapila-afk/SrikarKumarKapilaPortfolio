@@ -49,12 +49,14 @@
         #bg-img-2 { 
             background-image: url('WhatsApp Image 2026-09-27 at 9.56.02 AM.jpeg'); 
             opacity: 0; 
-            filter: brightness(1.75) contrast(1.15);
+            /* Significantly boosted brightness and saturation */
+            filter: brightness(2.3) contrast(1.3) saturate(1.2);
         }
         #bg-img-3 { 
             background-image: url('WhatsApp Image 2026-09-27 at 9.54.22 AM (1).jpeg'); 
             opacity: 0; 
-            filter: brightness(1.75) contrast(1.15);
+            /* Significantly boosted brightness and saturation */
+            filter: brightness(2.3) contrast(1.3) saturate(1.2);
         }
 
         #scroll-overlay {
@@ -64,7 +66,8 @@
             width: 100%;
             height: 100%;
             background-color: #000000;
-            opacity: 0.85;
+            /* Lowered overlay opacity so the brighter images shine through clearly */
+            opacity: 0.65;
             transition: opacity 0.1s ease-out;
             pointer-events: none;
             z-index: 1;
@@ -99,7 +102,7 @@
                 bg3.style.opacity = '1';
             }
 
-            const dynamicOpacity = 0.85 + (scrollFraction * 0.10);
+            const dynamicOpacity = 0.65 + (scrollFraction * 0.10);
             overlay.style.opacity = dynamicOpacity.toFixed(3);
         }
 
@@ -228,7 +231,7 @@
                     </div>
                     <h4 class="text-xl font-semibold text-white">Pottery</h4>
                     <p class="text-gray-300 text-base leading-relaxed">
-                        Enjoy working with ceramics and the creative, hands-on process of shaping functional and artistic pieces.
+                        Hands on experience with creating artifacts with stoneware and earthenware clay.
                     </p>
                 </div>
 
@@ -238,7 +241,7 @@
                     </div>
                     <h4 class="text-xl font-semibold text-white">Video Games</h4>
                     <p class="text-gray-300 text-base leading-relaxed">
-                        Engage in strategic and immersive gaming as a way to unwind, solve complex system mechanics, and maintain quick problem-solving reflexes.
+                        Build my strategical skills and reflexes to ready myself for competition and pressure.
                     </p>
                 </div>
 
@@ -248,7 +251,7 @@
                     </div>
                     <h4 class="text-xl font-semibold text-white">Programming</h4>
                     <p class="text-gray-300 text-base leading-relaxed">
-                        Building software tools, web platforms, and automated solutions to streamline technical workflows and bring creative concepts to life.
+                        Design projects involving Arduino hardware to solve a problem or demonstrate a unique technological idea.
                     </p>
                 </div>
 
@@ -256,9 +259,9 @@
                     <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
                         <i class="fa-solid fa-wind"></i>
                     </div>
-                    <h4 class="text-xl font-semibold text-white">Aerodynamics Research</h4>
+                    <h4 class="text-xl font-semibold text-white">Aerodynamics</h4>
                     <p class="text-gray-300 text-base leading-relaxed">
-                        Exploring advanced flow mechanics, boundary layer analysis, and high-efficiency flight/vehicle designs.
+                        Research different wing design implementations and their effect on the flow of air.
                     </p>
                 </div>
 
@@ -266,9 +269,9 @@
                     <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
                         <i class="fa-solid fa-chart-line"></i>
                     </div>
-                    <h4 class="text-xl font-semibold text-white">Finance Research</h4>
+                    <h4 class="text-xl font-semibold text-white">Finance</h4>
                     <p class="text-gray-300 text-base leading-relaxed">
-                        Studying economic trends, market models, and quantitative investment strategies to build robust financial literacy.
+                        Research and learn stock market trends to develop personal financial literacy.
                     </p>
                 </div>
             </div>
