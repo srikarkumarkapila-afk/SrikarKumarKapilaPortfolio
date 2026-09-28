@@ -91,6 +91,7 @@
                 </div>
             </div>
             
+            <!-- Desktop Navigation Links -->
             <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
                 <a href="index.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">About Me</a>
                 <a href="involvement.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Involvement & Interests</a>
@@ -98,25 +99,31 @@
                 <a href="honors.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Honors Experiences</a>
             </nav>
 
+            <!-- Mobile Menu Button -->
             <div class="md:hidden">
-                <button type="button" class="text-gray-400 hover:text-white p-2">
-                    <i class="fa-solid fa-bars text-xl"></i>
+                <button type="button" id="mobile-menu-button" class="text-gray-400 hover:text-white p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
                 </button>
             </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-darkBg/95 border-b border-cardBorder px-4 pt-2 pb-4 space-y-2 backdrop-blur-md">
+            <a href="index.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">About Me</a>
+            <a href="involvement.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Involvement & Interests</a>
+            <a href="yearinreview.html" class="block px-4 py-2.5 rounded-xl text-base font-medium bg-ucRed text-white transition-all shadow-sm">Year-In-Review</a>
+            <a href="honors.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Honors Experiences</a>
         </div>
     </header>
 
     <!-- Main Content Container -->
     <main class="flex-grow w-[96%] max-w-[1700px] mx-auto px-4 sm:px-8 lg:px-12 py-12 space-y-16 relative z-10">
-
-        <!-- Header Section -->
         <section class="text-center space-y-4 py-8 border-b border-cardBorder">
             <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white">
                 Year-In-Review
             </h1>
         </section>
 
-        <!-- Annual Reflection Card -->
         <section class="space-y-6">
             <div class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl p-6 sm:p-8 shadow-xl flex items-center justify-between flex-wrap gap-4">
                 <div class="flex items-center space-x-4">
@@ -134,7 +141,6 @@
                 </div>
             </div>
         </section>
-
     </main>
 
     <!-- Footer -->
@@ -145,5 +151,22 @@
         </div>
     </footer>
 
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+    </script>
 </body>
 </html>

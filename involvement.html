@@ -42,7 +42,7 @@
             background-repeat: no-repeat;
             pointer-events: none;
             z-index: 0;
-            transition: opacity 0.5s ease-out;
+            transition: opacity 0.3s ease-out;
         }
 
         #bg-img-1 { background-image: url('WhatsApp Image 2026-09-27 at 9.54.10 AM.jpeg'); opacity: 1; }
@@ -71,7 +71,7 @@
         }
     </style>
     <script>
-        window.addEventListener('scroll', () => {
+        function updateBackgrounds() {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
             const scrollFraction = Math.min(1, Math.max(0, scrollTop / (docHeight || 1)));
@@ -80,6 +80,8 @@
             const bg2 = document.getElementById('bg-img-2');
             const bg3 = document.getElementById('bg-img-3');
             const overlay = document.getElementById('scroll-overlay');
+
+            if (!bg1 || !bg2 || !bg3 || !overlay) return;
 
             if (scrollFraction <= 0.33) {
                 const p = scrollFraction * 3;
@@ -99,7 +101,11 @@
 
             const dynamicOpacity = 0.85 + (scrollFraction * 0.10);
             overlay.style.opacity = dynamicOpacity.toFixed(3);
-        });
+        }
+
+        window.addEventListener('scroll', updateBackgrounds);
+        window.addEventListener('load', updateBackgrounds);
+        document.addEventListener('DOMContentLoaded', updateBackgrounds);
     </script>
 </head>
 <body class="text-gray-100 font-sans antialiased min-h-screen flex flex-col selection:bg-ucRed selection:text-white relative">
@@ -115,7 +121,7 @@
             <div class="flex items-center space-x-3">
                 <a href="index.html" class="flex items-center group" title="Return to About Me">
                     <div class="w-12 h-12 rounded-xl overflow-hidden bg-cardBorder border border-ucRed/40 flex items-center justify-center shadow-lg shadow-ucRed/20 group-hover:border-ucRed transition-all">
-                        <img src="SK.jpg" alt="SK Logo" class="w-full h-full object-cover">
+                        <img src="SK.jpg" alt="SK Logo" class="w-full h-full object-cover transform-gpu">
                     </div>
                 </a>
                 <div>
@@ -124,6 +130,7 @@
                 </div>
             </div>
             
+            <!-- Desktop Navigation Links -->
             <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
                 <a href="index.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">About Me</a>
                 <a href="involvement.html" class="px-4 py-2 rounded-xl text-sm font-medium bg-ucRed text-white transition-all shadow-sm">Involvement & Interests</a>
@@ -131,11 +138,20 @@
                 <a href="honors.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Honors Experiences</a>
             </nav>
 
+            <!-- Mobile Menu Button -->
             <div class="md:hidden">
-                <button type="button" class="text-gray-400 hover:text-white p-2">
-                    <i class="fa-solid fa-bars text-xl"></i>
+                <button type="button" id="mobile-menu-button" class="text-gray-400 hover:text-white p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
                 </button>
             </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-darkBg/95 border-b border-cardBorder px-4 pt-2 pb-4 space-y-2 backdrop-blur-md">
+            <a href="index.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">About Me</a>
+            <a href="involvement.html" class="block px-4 py-2.5 rounded-xl text-base font-medium bg-ucRed text-white transition-all shadow-sm">Involvement & Interests</a>
+            <a href="yearinreview.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Year-In-Review</a>
+            <a href="honors.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Honors Experiences</a>
         </div>
     </header>
 
@@ -302,5 +318,22 @@
         </div>
     </footer>
 
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+    </script>
 </body>
 </html>
