@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UHP Gateway - Srikar Kumar Kapila</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ucRed: '#FF2A4D',
+                        ucDarkRed: '#d91436',
+                        ucBlack: '#000000',
+                        darkBg: '#0A0A0C',
+                        cardBg: '#141418',
+                        cardBorder: '#262630'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #000; overflow-x: hidden; }
+        .video-bg-layer {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; pointer-events: none; z-index: 0;
+            filter: brightness(0.85) contrast(1.1);
+        }
+        #scroll-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #000000; opacity: 0.82; pointer-events: none; z-index: 1;
+        }
+    </style>
+</head>
+<body class="text-gray-100 font-sans antialiased min-h-screen flex flex-col selection:bg-ucRed selection:text-white relative">
+    
+    <!-- Background Video Loop -->
+    <video autoplay muted loop playsinline webkit-playsinline class="video-bg-layer">
+        <source src="football.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div id="scroll-overlay"></div>
+
+    <header class="sticky top-0 z-50 bg-darkBg/90 backdrop-blur-md border-b border-cardBorder">
+        <div class="max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center group">
+                    <div class="w-12 h-12 rounded-xl overflow-hidden bg-cardBorder border border-ucRed/40 flex items-center justify-center shadow-lg shadow-ucRed/20">
+                        <img src="SK.jpg" alt="SK Logo" class="w-full h-full object-cover">
+                    </div>
+                </a>
+                <div>
+                    <span class="block font-bold text-lg tracking-tight text-white">Srikar Kumar Kapila</span>
+                    <span class="block text-xs text-ucRed font-medium tracking-wider uppercase">University of Cincinnati | University Honors Program</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                <a href="index.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">About Me</a>
+                <a href="involvement.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Involvement & Interests</a>
+                <a href="yearinreview.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Year-In-Review</a>
+                <a href="honors.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Honors Experiences</a>
+                <a href="uhpgateway.html" class="px-4 py-2 rounded-xl text-sm font-medium bg-ucRed text-white transition-all shadow-sm">UHP Gateway</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow w-[96%] max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-12 space-y-12 relative z-10">
+        <section class="text-center space-y-3 py-6 border-b border-cardBorder">
+            <div class="text-xs font-bold uppercase tracking-[2.4px] text-red-500 drop-shadow-md">Global Citizen Scholar Portfolio</div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white font-serif">UHP Gateway</h1>
+            <p class="max-w-2xl mx-auto text-gray-300 text-sm sm:text-base">Reflective documentation of transformative experiential learning milestones, leadership, and personal growth.</p>
+        </section>
+
+        <!-- Experience Showcase Section -->
+        <section class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl p-6 sm:p-10 shadow-xl space-y-8">
+            <div class="flex items-center space-x-3 border-b border-cardBorder pb-4 flex-wrap gap-4 justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="text-ucRed text-2xl">
+                        <i class="fa-solid fa-plane-departure"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-serif text-white font-normal">Experience Showcase</h2>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider mt-0.5">William Mason High School Football Team • Student Drone Pilot</p>
+                    </div>
+                </div>
+                <span class="px-3 py-1 rounded-lg bg-ucRed/20 text-ucRed font-semibold text-xs border border-ucRed/30">
+                    Experiential Reflection
+                </span>
+            </div>
+
+            <!-- Reflection Content -->
+            <div class="space-y-6 text-gray-200 text-base sm:text-lg leading-relaxed">
+                <p>
+                    Last year, I had the opportunity to become the first ever student drone pilot for the William Mason High School Football Team. I spent 15 hours per week taking care of the drone. I would record practices 3 days of the week. On Friday evenings, I would stream my footage to the Team to provide live insight on the game. Later, I would personally asked the coaches for feedback.
+                </p>
+
+                <p>
+                    The experience was not only eye opening for me on how much effort the sports team puts in, but also taught me responsibility. One of the times I recall: on a fine day, I was flying the drone, when a battery error caused it to malfunction mid air. Dropping from a height of 100ft, the drone violently crashed. I took complete responsibility by explaining to the coaches what exactly happened. Seeing my dedication, the coaches received permission to buy a new one. After hours of research, I found the best drone that was optimal for the price and purchased it. I came right back on track and finished the season strong. 
+                </p>
+
+                <p>
+                    That experience paved my way to not only deal with intense pressure on my schedule, but also with situations that I could not control. I learned the value of integrity, responsibility, effort, and time. In daily life, unexpected or intense situations occur all the time. By practicing these values and skills, I grow more robust and handle these situations faster and more efficiently.
+                </p>
+
+                <p class="font-medium text-white border-l-4 border-ucRed pl-4 py-2 bg-darkBg/60 rounded-r-xl">
+                    This experience showed me that, as a Global Citizen Scholar, I must be ready for all kinds of situations. Sometimes, the solution I come up with could have a very bad side effect–but, I know now that if I am dedicated, I can fix it. A Global Citizen Scholar must be reliable, adaptable, and responsible. 
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-cardBg/90 backdrop-blur-md border-t border-cardBorder mt-20 py-10 text-center text-gray-400 text-base relative z-10">
+        <p>© 2026 Srikar Kumar Kapila • University of Cincinnati University Honors Program (UHP)</p>
+    </footer>
+</body>
+</html>
