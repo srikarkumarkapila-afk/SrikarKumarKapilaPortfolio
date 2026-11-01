@@ -54,7 +54,6 @@
             background-image: url('Plane.jpeg');
             opacity: 0;
             transition: opacity 0.3s ease-out;
-            /* Boosted brightness, contrast, and saturation so it stands out clearly */
             filter: brightness(2.1) contrast(1.25) saturate(1.1);
         }
 
@@ -65,7 +64,6 @@
             width: 100%;
             height: 100%;
             background-color: #000000;
-            /* Lowered overlay opacity so the background shines through much better */
             opacity: 0.65;
             transition: opacity 0.1s ease-out;
             pointer-events: none;
@@ -117,7 +115,6 @@
             } else {
                 const progress = (scrollFraction - 0.5) * 2;
                 bgCampus.style.opacity = '0';
-                // Increased max opacity to 1.0 so the plane image is fully vibrant
                 bgHangar.style.opacity = progress.toFixed(3);
             }
 
@@ -157,6 +154,7 @@
                 <a href="involvement.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Involvement & Interests</a>
                 <a href="yearinreview.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Year-In-Review</a>
                 <a href="honors.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Honors Experiences</a>
+                <a href="uhpgateway.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">UHP Gateway</a>
             </nav>
 
             <!-- Mobile Menu Button -->
@@ -173,6 +171,7 @@
             <a href="involvement.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Involvement & Interests</a>
             <a href="yearinreview.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Year-In-Review</a>
             <a href="honors.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Honors Experiences</a>
+            <a href="uhpgateway.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">UHP Gateway</a>
         </div>
     </header>
 
